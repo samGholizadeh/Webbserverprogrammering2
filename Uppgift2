@@ -1,0 +1,14 @@
+/*
+Uppgift som gick ut på att skriva SQL förfrågningar mot en databas. Läraren hade
+skrivit upp vilken data han ville att vi skulle få fram.
+*/
+
+SELECT * FROM telefon;
+SELECT Namn FROM filmer;
+SELECT Fornamn, Efternamn FROM kunder;
+SELECT * FROM filmer WHERE Land = "Sverige";
+SELECT * FROM kunder WHERE Efternamn = "Johansson";
+SELECT * FROM filmer WHERE Land = "USA" AND Pris = 25;
+SELECT * FROM kunder WHERE Fornamn = "Michael" OR Fornamn = "Mikael";
+SELECT * FROM kunder WHERE LEFT(Postnummer, 1) != 1;
+SELECT DISTINCT Land FROM filmer;

@@ -1,0 +1,16 @@
+/*
+Uppgift som gick ut på att skriva SQL förfrågningar mot en databas. Läraren hade
+skrivit upp vilken data han ville att vi skulle få fram. Mer avancerad en den tidigare
+uppgift med joining av flera tabeller per förfrågning.
+*/
+
+SELECT filmer.Namn FROM filmer INNER JOIN uthyrning ON filmer.FilmID = uthyrning.FilmID INNER JOIN kunder ON uthyrning.Kundnummer = kunder.Kundnummer WHERE kunder.Fornamn = "Vera" AND kunder.Efternamn = "Lindberg" AND filmer.Kategori = "Drama";
+SELECT Totalt FROM antal INNER JOIN butik ON antal.ButikID = butik.ButikID INNER JOIN filmer ON filmer.FilmID = antal.FilmID WHERE Film.Namn = "Notting Hill" AND butik.Namn = "Videomax";
+SELECT filmer.Namn FROM filmer INNER JOIN uthyrning ON filmer.FilmID = uthyrning.FilmID INNER JOIN kunder ON uthyrning.Kundnummer = kunder.Kundnummer WHERE filmer.Pris = 25 AND kunder.Fornamn = "Natalie" AND kunder.Efternamn = "Karlsmark";
+SELECT filmer.Namn FROM filmer INNER JOIN uthyrning ON filmer.FilmID = uthyrning.FilmID INNER JOIN kunder ON uthyrning.Kundnummer = kunder.Kundnummer WHERE uthyrning.Aterlamning = 0 AND kunder.Fornamn = "Larry" AND kunder.Efternamn = "King";
+SELECT Namn FROM butik INNER JOIN antal ON antal.ButikID = butik.ButikID INNER JOIN filmer ON filmer.FilmID = antal.FilmID WHERE filmer.Namn = "Braveheart" AND antal.Inne = 0;
+SELECT DISTINCT filmer.Namn FROM filmer INNER JOIN antal ON filmer.FilmID = antal.FilmID INNER JOIN butik ON antal.ButikID = antal.ButikID WHERE filmer.Huvudroll = "Mel Gibson" AND butik.Namn = "Videopalatset";
+SELECT filmer.Namn FROM filmer INNER JOIN uthyrning ON filmer.FilmID = uthyrning.FilmID INNER JOIN kunder ON uthyrning.Kundnummer = kunder.Kundnummer INNER JOIN butik ON butik.ButikID = uthyrning.ButikID WHERE kunder.Fornamn = "Gunilla" AND kunder.Efternamn = "Berg" AND butik.Namn = "Videokungen";
+SELECT filmer.Namn FROM filmer JOIN uthyrning ON filmer.FilmID = uthyrning.FilmID JOIN butik ON uthyrning.ButikID = butik.ButikID WHERE filmer.Pris = 40 AND uthyrning.Aterlamning > 0 AND butik.Namn = "Videoprinsen";
+SELECT kunder.Fornamn, kunder.Efternamn, kunder.Postnummer FROM kunder JOIN uthyrning ON kunder.Kundnummer = uthyrning.Kundnummer JOIN filmer ON uthyrning.FilmID = filmer.FilmID JOIN butik ON uthyrning.ButikID = butik.ButikID WHERE LEFT(kunder.Postnummer, 1) = 5 AND filmer.Kategori = "Action" AND butik.Namn = "Videoprinsen";
+SELECT kunder.Fornamn, kunder.Efternamn FROM kunder JOIN uthyrning ON kunder.Kundnummer = uthyrning.Kundnummer JOIN filmer ON uthyrning.FilmID = filmer.FilmID JOIN butik ON uthyrning.ButikID = butik.ButikID WHERE RIGHT(kunder.Efternamn, 3) = "son" AND filmer.Kategori = "Rysare" AND uthyrning.Aterlamning = 0;
